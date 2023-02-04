@@ -1,4 +1,6 @@
 import './app.css'
+import 'bytemd/dist/index.css'
+
 import App from './App.svelte'
 
 const app = new App({

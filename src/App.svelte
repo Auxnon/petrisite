@@ -1,8 +1,19 @@
 <script lang="ts">
+import { Editor, Viewer } from 'bytemd'
+  import gfm from '@bytemd/plugin-gfm'
   import svelteLogo from "./assets/svelte.svg";
   import Counter from "./lib/Counter.svelte";
   import Main from "./lib/Main.svelte";
   let main_color = "white";
+  let value
+  const plugins = [
+    gfm(),
+    // Add more plugins here
+  ]
+
+  function handleChange(e) {
+    value = e.detail.value
+  }
 </script>
 
 <main style="--color-main: {main_color}">
@@ -31,6 +42,10 @@
   <p class="read-the-docs">Cjlick on the Vite and Svelte logos to learn more</p>
 </main>
 <Main />
+
+<template>
+  <Editor {value} {plugins} on:change={handleChange} />
+</template>
 
 <style>
   .logo {
